@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, ScrollView, Text, View } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
 export default class AlbumList extends Component {
     state={ album: [] };
     componentWillMount(){
-        axios.get('http://rallycoding.herokuapp.com/api/music_albums')
-        .then(response => this.setState({ album: response.data }));
+    fetch('https://rallycoding.herokuapp.com/api/music_albums')
+    .then(response => response.json())
+    .then(data => this.setState({ album: data }));
+    
     }   
 
     renderAlbum(){
@@ -19,9 +21,9 @@ export default class AlbumList extends Component {
     render() {
         console.log(this.state);
         return (
-            <View >
-                <Text>{this.renderAlbum()}</Text>
-            </View>
+            <ScrollView >
+                {this.renderAlbum()}
+            </ScrollView>
         );
     }
 }
