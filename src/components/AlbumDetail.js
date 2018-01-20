@@ -11,9 +11,12 @@ export default class AlbumDetail extends Component {
                         <Image style={styles.thumbnail} source={{ uri: this.props.album.thumbnail_image}}/>
                 </View>
                 <View style={styles.headercontent}>
-                <Text>{this.props.album.title}</Text>
+                        <Text style={styles.headerText}>{this.props.album.title}</Text>
                 <Text>{this.props.album.artist}</Text>
                 </View>
+                </CardSection>
+                <CardSection>
+                    <Image style={styles.thumbnail} source={{ uri: this.props.album.image }} />
                 </CardSection>
             </Card>
         );
@@ -28,6 +31,9 @@ const styles = StyleSheet.create({
     thumbnail:{
         height: 50,
         width: 50
+    },
+    headerText: {
+        fontSize: 18,
     },
     thumbnailcontainer: {
         justifyContent: 'center',
